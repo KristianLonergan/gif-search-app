@@ -1,0 +1,34 @@
+.form-control {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+} 
+
+.SearchButton {
+  background-color: #563d7c !important;
+  border-color: #563d7c !important;
+}
+
+.SearchButton {
+  background-color: #563d7c !important;
+  border-color: #563d7c !important;
+}
+
+.SearchButton:hover:active:focus {
+  background-color: #7c6d94 !important;
+  border-color: #7c6d94 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.SearchButton:hover:active:focus {
+  background-color: #7c6d94 !important;
+  border-color: #7c6d94 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.Input:focus {
+  box-shadow: inset 0 0 0 0.1rem rgba(0,123,255,.25) !important;
+}
+.Input.Invalid {
+  border-color: #ff8080 !important;
+  box-shadow: inset 0 0 0 0.1rem rgba(255, 0, 0, 0.25) !important;
+}

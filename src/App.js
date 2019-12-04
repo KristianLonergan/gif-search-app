@@ -1,26 +1,60 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from "react";
+import Row from "react-bootstrap/Row";
+import GifCardList from './components/GifCardList/GifCardList';
+import SearchBar from "./components/SearchBar/SearchBar";
+import PageHeader from './components/PageHeader/PageHeader';
 
-function App() {
+import useGiphy from "./hooks/giphyApi";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const App = (props) => {
+
+  const {
+    getGif: getGifs,
+    error: searchError,
+    data: searchData,
+    isLoading: isSearchLoading
+  } = useGiphy('search');
+  
+  const {
+    getGif: getTrendingGifs,
+    error: trendingError,
+    data: trendingData,
+    isLoading: isTrendingLoading
+  } = useGiphy('trending');
+
+  useEffect(() => {
+    const params = { limit: 5 };
+    getTrendingGifs(params);
+  }, [getTrendingGifs]);
+
+  const getGifsHandler = searchValue => {
+    getGifs({
+      q: searchValue,
+      limit: 5
+    });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+
+      <PageHeader />
+
+      <Row>
+        <SearchBar clicked={getGifsHandler} />
+      </Row>
+
+      <Row>
+        <GifCardList title="Results:" error={searchError} loading={isSearchLoading} data={searchData}/>
+      </Row>
+
+      <Row>
+        <GifCardList title="Currently trending:" error={trendingError} loading={isTrendingLoading} data={trendingData}/>
+      </Row>
+
+    </React.Fragment>
   );
-}
+};
 
 export default App;
