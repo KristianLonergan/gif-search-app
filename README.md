@@ -1,7 +1,7 @@
 
 ## GIF Search Application
 
-A small React application that allows you to search for gifs
+A small React application that allows you to search for gifs and shows the top 5 trending GIF's at that moment in time.
 
 ### How to run
 1. Clone repo
