@@ -46,11 +46,11 @@ const App = (props) => {
       </Row>
 
       <Row>
-        <GifCardList title="Results:" error={searchError} loading={isSearchLoading} data={searchData}/>
+        <GifCardList title="Results:" error={searchError} loading={isSearchLoading} giphyData={searchData}/>
       </Row>
 
       <Row>
-        <GifCardList title="Currently trending:" error={trendingError} loading={isTrendingLoading} data={trendingData}/>
+        <GifCardList title="Currently trending:" error={trendingError} loading={isTrendingLoading} giphyData={trendingData}/>
       </Row>
 
     </React.Fragment>

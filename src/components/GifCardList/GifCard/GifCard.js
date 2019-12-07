@@ -2,11 +2,11 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 
 const GifCard = props => (
-  <Card>
+  <Card data-test="gif-card">
     <Card.Img variant="top" href={props.url} src={props.imageUrl} />
 
     <Card.Body>
-      <Card.Text>{props.title.toLowerCase()}</Card.Text>
+      <Card.Text>{props.title.toLowerCase() || '[No title provided]'}</Card.Text>
     </Card.Body>
 
     <Card.Footer>

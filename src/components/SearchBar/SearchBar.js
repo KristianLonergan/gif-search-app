@@ -42,7 +42,7 @@ const SearchBar = props => {
 
   const keyPressHandler = event => {
     if (event.key === "Enter") {
-      props.clicked(searchValue);
+      onClickSearch();
     }
   };
 
@@ -62,8 +62,9 @@ const SearchBar = props => {
 
   return (
     <React.Fragment>
-      <InputGroup ref={target} className="mb-3">
+      <InputGroup ref={target} className="mb-3" data-test="input-group">
         <FormControl
+          data-test="search-box"
           className={inputClasses}
           placeholder="Search for GIF"
           aria-label="Search for GIF"
@@ -74,6 +75,7 @@ const SearchBar = props => {
         />
         <InputGroup.Append>
           <Button
+            data-test="search-button"
             active={false}
             className={classes.SearchButton}
             onClick={onClickSearch}
@@ -88,7 +90,7 @@ const SearchBar = props => {
         show={validity.isInvalid}
         placement="auto"
       >
-        {props => <Tooltip {...props}>{tooltip}</Tooltip>}
+        {props => <Tooltip data-test="tooltip" {...props}>{tooltip}</Tooltip>}
       </Overlay>
     </React.Fragment>
   );

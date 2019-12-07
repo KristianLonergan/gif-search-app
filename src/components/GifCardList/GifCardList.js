@@ -1,17 +1,26 @@
 import React from "react";
-import GifCard from "./GifCard/GifCard";
 import CardDeck from "react-bootstrap/CardDeck";
+import ErrorAlert from '../ErrorAlert/ErrorAlert';
+import GifCard from "./GifCard/GifCard";
 import Spinner from "../UI/Spinner/Spinner";
 
 const GifCardLists = props => {
   let content = null;
+  const title = <p className="lead" data-test="gif-title">{props.title}</p>;
 
   if (props.error) {
-    return <div>Error</div>;
-  } else if (props.loading) {
+    return (
+      <React.Fragment>
+        {title}
+        <ErrorAlert message={props.error}/>
+      </React.Fragment>
+    );
+  }
+  else if (props.loading) {
     return <Spinner />;
-  } else if (props.data) {
-    const content = props.data.data.map((el, index) => {
+  }
+  else if (props.giphyData) {
+    const content = props.giphyData.data.map((el, index) => {
       const { url, title, images } = el;
 
       return (
@@ -26,7 +35,7 @@ const GifCardLists = props => {
 
     return (
       <React.Fragment>
-        <p className="lead">{props.title}</p>
+        {title}
         <CardDeck>{content}</CardDeck>
       </React.Fragment>
     );
